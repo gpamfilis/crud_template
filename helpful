@@ -1,0 +1,60 @@
+[mysql]
+mysql -uroot -ppass
+CREATE DATABASE mydatabase CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+use <databasename>;
+drop database if exist <databasename>;
+
+
+sudo apt-get install libmysqlclient-dev
+pip install mysqlclient
+
+
+[debugging]
+sudo nano /etc/apache2/sites-available/api.e_orders.conf
+sudo nano  /var/log/apache2/error.log
+
+
+
+
+https://unix.stackexchange.com/questions/45676/how-do-i-remove-a-directory-and-all-its-contents
+
+https://stackoverflow.com/questions/19344252/how-to-install-configure-mod-wsgi-for-py3
+
+https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server
+
+
+https://www.thecodeship.com/deployment/deploy-django-apache-virtualenv-and-mod_wsgi/
+https://stackoverflow.com/questions/6454564/target-wsgi-script-cannot-be-loaded-as-python-module
+https://www.youtube.com/watch?v=bMEAtCuFoiw
+https://www.youtube.com/watch?v=nDbdirDipLE&list=PLaDyYdZGRivgLY2Wq_0B5eFpEbFtRMkuG&index=10
+https://stackoverflow.com/questions/7475223/mysql-config-not-found-when-installing-mysqldb-python-interface
+https://dba.stackexchange.com/questions/76788/create-a-database-with-charset-utf-8
+
+https://www.google.gr/search?q=delete+database+mysql&oq=delete+data&aqs=chrome.2.69i57j0l5.3901j0j7&sourceid=chrome&ie=UTF-8
+https://www.liquidweb.com/kb/delete-a-mysql-database-on-linux-via-command-line/
+https://stackoverflow.com/questions/1082130/how-do-i-remove-a-mysql-database
+https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04
+
+https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps
+
+https://www.digitalocean.com/community/questions/var-www-index-html-not-showing-up-just-standard-it-works-page-how-to-solve
+https://www.digitalocean.com/community/tutorials/how-to-install-the-apache-web-server-on-ubuntu-16-04
+
+https://stackoverflow.com/questions/12787501/wget-and-run-remove-bash-script-in-one-line
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-16-04
+
+https://help.github.com/articles/cloning-a-repository/
+
+https://stackoverflow.com/questions/32643514/flask-404-page-not-found
+
+https://stackoverflow.com/questions/454854/no-module-named-mysqldb
+
+https://stackoverflow.com/questions/25865270/how-to-install-python-mysqldb-module-using-pip
+
+
+[domain setup]
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-host-name-with-digitalocean
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-and-test-dns-subdomains-with-digitalocean-s-dns-panel
