@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bucket</title>
+    <link rel="stylesheet" href="/static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="/static/assets/css/Carousel_Image_Slider.css">
+    <link rel="stylesheet" href="/static/assets/css/Carousel_Image_Slider1.css">
+    <link rel="stylesheet" href="/static/assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="/static/assets/css/Footer-Clean.css">
+    <link rel="stylesheet" href="/static/assets/css/Carousel-Hero.css">
+    <link rel="stylesheet" href="/static/assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="/static/assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="/static/assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="/static/assets/css/Pricing-Table-Style-01.css">
+    <link rel="stylesheet" href="/static/assets/css/Pricing-Table-Style-011.css">
+    <link rel="stylesheet" href="/static/assets/css/styles.css">
+    <link
+            href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.css"
+            rel="stylesheet" type="text/css">
+    <link
+            href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.css"
+            rel="stylesheet" type="text/css">
+
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.5.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.5.min.js"></script>
+
+</head>
+
+<body>
+<div>
+    <nav class="navbar navbar-default navigation-clean-button">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand" href="#">bucket</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span
+                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
+                        class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div
+                    class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="active" role="presentation"><a href="#">First Item</a></li>
+                    <li role="presentation"><a href="#">Second Item</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
+                                            href="#">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li role="presentation"><a href="#">First Item</a></li>
+                            <li role="presentation"><a href="#">Second Item</a></li>
+                            <li role="presentation"><a href="#">Third Item</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p class="navbar-text navbar-right actions"><a class="navbar-link login" href="#">Log In</a> <a
+                        class="btn btn-default action-button" role="button" href="#">Sign Up</a></p>
+            </div>
+        </div>
+    </nav>
+
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div><H1>{{title}}</H1>
+
+                    <form action="/plot">
+                        <select name="feature_name">
+                            {% for feature in feature_names %}
+                            {% if feature == current_feature_name %}
+                            <option selected value="{{ feature }}">{{ feature }}</option>
+                            {% else %}
+                            <option value="{{ feature }}">{{ feature }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                        <input type="submit">
+                    </form>
+
+                    {{ script|safe }}
+                    {{ div|safe }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div><H1>{{ title }}</H1>
+
+                    <form action="/plot">
+                        <select name="feature_name">
+                            {% for feature in feature_names %}
+                            {% if feature == current_feature_name %}
+                            <option selected value="{{ feature }}">{{ feature }}</option>
+                            {% else %}
+                            <option value="{{ feature }}">{{ feature }}</option>
+                            {% endif %}
+                            {% endfor %}
+                        </select>
+                        <input type="submit">
+                    </form>
+
+                    {{ script|safe }}
+                    {{ div|safe }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div><H1>{{title}}</H1>
+
+
+          {{ script|safe }}
+                    {{ div|safe }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div><H1>{{title}}</H1>
+
+          {{ script|safe }}
+                    {{ div|safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-basic">
+    <footer>
+        <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
+                class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a
+                href="#"><i class="icon ion-social-facebook"></i></a></div>
+        <ul class="list-inline">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright">Company Name © 2016</p>
+    </footer>
+</div>
+</div>
+<script src="/static//static/assets/js/jquery.min.js"></script>
+<script src="/static//static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
