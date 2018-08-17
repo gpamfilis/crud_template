@@ -61,6 +61,13 @@ class Project(db.Model):
     justification = db.Column(db.String(64), nullable=True)
     comments = db.Column(db.String(64), nullable=True)
 
+class Email(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    first_name = db.Column(db.String(64))
+    last_name = db.Column(db.String(64))
+    email = db.Column(db.String(64), unique=True, index=True)
+    token = db.Column(db.String(64), unique=True)
+    
 # @db.event.listens_for(User, "after_insert")
 # def insert_order_to_printer(mapper, connection, target):
 #     print('New User', target.username)

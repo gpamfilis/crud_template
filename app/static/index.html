@@ -6,41 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>suez</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Footer-Basic.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
     <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
 <body>
-<div>
-    <nav class="navbar navbar-default navigation-clean-button">
-        <div class="container">
-            <div class="navbar-header"><a class="navbar-brand" href="#">Company Name</a>
-                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span
-                        class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
-                        class="icon-bar"></span><span class="icon-bar"></span></button>
-            </div>
-            <div
+    <div>
+        <nav class="navbar navbar-default navigation-clean-button">
+            <div class="container">
+                <div class="navbar-header"><a class="navbar-brand" href="#">Suez</a><button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div>
+                <div
                     class="collapse navbar-collapse" id="navcol-1">
-                <ul class="nav navbar-nav"></ul>
-                <button class="btn btn-success navbar-btn" type="button" id="add" data-toggle="modal"
-                        data-target="#main_modal">ADD
-                </button>
-                <button class="btn btn-warning navbar-btn" type="button" disabled="disabled" id="modify"
-                        data-toggle="modal"
-                        data-target="#edit_modal">MODIFY
-                </button>
-                <button class="btn btn-danger navbar-btn" type="button" disabled="disabled" id="delete"
-                        data-toggle="modal" data-target="#modal1">DELETE
-                </button>
-            </div>
-        </div>
+                    <ul class="nav navbar-nav"></ul><button class="btn btn-success navbar-btn" type="button" id="add" data-toggle="modal" data-target="#main_modal">ADD</button><button class="btn btn-warning navbar-btn" type="button" disabled="disabled" id="modify" data-toggle="modal"
+                        data-target="#main_modal">MODIFY</button><button class="btn btn-danger navbar-btn" type="button" disabled="disabled" id="delete" data-toggle="modal" data-target="#modal1">DELETE</button><a class="btn btn-info disabled navbar-btn" role="button"
+                        href="{{url_for('stats')}}">STATICTICS</a><a class="btn btn-info navbar-btn" role="button" href="{{url_for('main.download')}}">DOWNLOAD</a></div>
+    </div>
     </nav>
     <div class="modal fade" role="dialog" tabindex="-1" id="main_modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
+                <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                     <h4 class="modal-title">PROJECT INFORMATION</h4>
                 </div>
                 <div class="modal-body">
@@ -50,146 +38,89 @@
                             <div class="text-center"><label class="control-label">Project Title</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="text" name="project_title"
-                                                            id="project_title"></div>
+                            <div class="text-center"><input class="form-control" type="text" name="project_title" id="project_title"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">2019</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_1"
-                                                            id="year_1"></div>
+                            <div class="text-center"><input class="form-control" type="number" name="year_1" id="year_1"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">2020</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_2"
-                                                            id="year_2"></div>
+                            <div class="text-center"><input class="form-control" type="number" name="year_2" id="year_2"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">2021</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_3"
-                                                            id="year_3"></div>
+                            <div class="text-center"><input class="form-control" type="number" name="year_3" id="year_3"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">2022</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_4"
-                                                            id="year_4"></div>
+                            <div class="text-center"><input class="form-control" type="number" name="year_4" id="year_4"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">2023</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_5"
-                                                            id="year_5"></div>
+                            <div class="text-center"><input class="form-control" type="number" name="year_5" id="year_5"></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">Justification</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><textarea class="form-control input-lg" name="justification"
-                                                               id="justification"></textarea></div>
+                            <div class="text-center"><textarea class="form-control input-lg" name="justification" id="justification"></textarea></div>
                         </div>
                         <div class="form-group">
                             <div class="text-center"><label class="control-label">Comments</label></div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center"><textarea class="form-control input-lg" wrap="hard" name="comments"
-                                                               id="comments"></textarea></div>
+                            <div class="text-center"><textarea class="form-control input-lg" wrap="hard" name="comments" id="comments"></textarea></div>
                         </div>
                     </form>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                <div class="modal-footer"><button class="btn btn-default" type="button" data-dismiss="modal">Close</button><button class="btn btn-primary" type="submit">Submit</button></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="table-responsive" id="example">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cell 1</td>
+                    <td>Cell 2</td>
+                </tr>
+                <tr>
+                    <td>Cell 3</td>
+                    <td>Cell 4</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h1>The plot</h1><img class="img-responsive" src="assets/img/bokeh_plot.png"></div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="edit_modal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">PROJECT INFORMATION</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Please fill out the information bellow.</p>
-                    <form method="post">
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">Project Title</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="text" name="project_title"
-                                                            id="project_title"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">2019</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_1"
-                                                            id="year_1"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">2020</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_2"
-                                                            id="year_2"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">2021</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_3"
-                                                            id="year_3"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">2022</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_4"
-                                                            id="year_4"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">2023</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><input class="form-control" type="number" name="year_5"
-                                                            id="year_5"></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">Justification</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><textarea class="form-control input-lg" name="justification"
-                                                               id="justification"></textarea></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><label class="control-label">Comments</label></div>
-                        </div>
-                        <div class="form-group">
-                            <div class="text-center"><textarea class="form-control input-lg" wrap="hard" name="comments"
-                                                               id="comments"></textarea></div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

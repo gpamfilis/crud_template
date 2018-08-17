@@ -6,6 +6,7 @@ class Config:
     def __init__(self):
         pass
 
+    APP_NAME = "Suez"
     SECRET_KEY = 'cheesecake'
     # JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or 'cheese cake'
     # JWT_ALGORITHM = 'SH256'
@@ -27,7 +28,7 @@ class DevelopmentConfig(Config):
         'finance': True,
         'reports': True
     }
-
+    TEMPLATES_AUTO_RELOAD = True
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
