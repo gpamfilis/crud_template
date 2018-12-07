@@ -33,7 +33,7 @@ $.ajaxSetup({
             xhr.setRequestHeader("X-CSRFToken", csrftoken);
         }
     }
-})
+});
 
 $('#example tbody').on( 'click', 'tr', function () {
 
@@ -64,10 +64,9 @@ else {
     table.$('tr.selected').removeClass('selected');
     console.log('Selecting');
     $(this).addClass('selected');
-    // var myURL = document.location.origin;
-    // var new_url = myURL.substring(0, myURL.indexOf('?'));
-    // window.history.pushState("object or string", "Title", myURL );
-    $('#add').prop('disabled', true); /// true
+    
+    // just setting the buttons to the proper state.
+    $('#add').prop('disabled', true); 
     $('#modify').prop('disabled', false);
     $('#delete').prop('disabled', false);
     id = table.row('.selected').data()[0];
@@ -90,8 +89,6 @@ else {
 
 }
 });
-
-
 
 
 $('#delete').click( function () {

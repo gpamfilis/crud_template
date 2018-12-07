@@ -1,6 +1,6 @@
 from flask_login import \
     UserMixin  # TODO: find out what UserMixin does and what can i do to not use and make my Users class more verbose.
-from . import db
+from . import db, login_manager
 # from . import login_manager  # TODO: understand what login manager does
 from werkzeug.security import generate_password_hash, \
     check_password_hash  # TODO: check and see if can change the strength of the hash
@@ -10,9 +10,9 @@ from itsdangerous import (TimedJSONWebSignatureSerializer
 from flask import current_app
 
 
-# @login_manager.user_loader
-# def load_user(user_id):
-#     return User.query.get(int(user_id))
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 class User(UserMixin, db.Model):
@@ -68,6 +68,7 @@ class Email(db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     token = db.Column(db.String(64), unique=True)
     
+
 # @db.event.listens_for(User, "after_insert")
 # def insert_order_to_printer(mapper, connection, target):
 #     print('New User', target.username)

@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta content="{{ csrf_token() }}" name="csrf-token" />
+    <meta content="{{ csrf_token() }}" name="csrf-token"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{name}}</title>
@@ -68,6 +68,7 @@
 
 
 
+
     </style>
 
 
@@ -82,13 +83,14 @@
 
 
 
+
     </style>
 
     <table id="example" class="display" style="width:100%">
         <thead>
         <tr>
             {% for row in headers %}
-                <th>{{row}}</th>
+            <th>{{row}}</th>
             {%endfor%}
 
 
@@ -101,7 +103,7 @@
         <tfoot>
         <tr>
             {% for row in headers %}
-                <th>{{row}}</th>
+            <th>{{row}}</th>
             {%endfor%}
         </tr>
         </tfoot>
@@ -113,7 +115,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="text-center">
-                    <h1>Count Missing Values per Column.</h1>                
+                    <h1>Count Missing Values per Column.</h1>
                     {{ script|safe }}
                     {{ div|safe }}
                 </div>
@@ -139,49 +141,57 @@
                         <div class="text-center"><label class="control-label">Project Title</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="text" name="project_title" id="project_title"></div>
+                        <div class="text-center"><input class="form-control" type="text" name="project_title"
+                                                        id="project_title"></div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">2019</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="number" name="year_1" id="year_1"></div>
+                        <div class="text-center"><input class="form-control" type="number" name="year_1" id="year_1">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">2020</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="number" name="year_2" id="year_2"></div>
+                        <div class="text-center"><input class="form-control" type="number" name="year_2" id="year_2">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">2021</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="number" name="year_3" id="year_3"></div>
+                        <div class="text-center"><input class="form-control" type="number" name="year_3" id="year_3">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">2022</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="number" name="year_4" id="year_4"></div>
+                        <div class="text-center"><input class="form-control" type="number" name="year_4" id="year_4">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">2023</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><input class="form-control" type="number" name="year_5" id="year_5"></div>
+                        <div class="text-center"><input class="form-control" type="number" name="year_5" id="year_5">
+                        </div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">Justification</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><textarea class="form-control input-lg" name="justification" id="justification"></textarea></div>
+                        <div class="text-center"><textarea class="form-control input-lg" name="justification"
+                                                           id="justification"></textarea></div>
                     </div>
                     <div class="form-group">
                         <div class="text-center"><label class="control-label">Comments</label></div>
                     </div>
                     <div class="form-group">
-                        <div class="text-center"><textarea class="form-control input-lg" wrap="hard" name="comments" id="comments"></textarea></div>
+                        <div class="text-center"><textarea class="form-control input-lg" wrap="hard" name="comments"
+                                                           id="comments"></textarea></div>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-default" type="button" data-dismiss="modal">Close</button>

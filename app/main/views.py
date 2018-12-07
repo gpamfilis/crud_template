@@ -3,9 +3,9 @@ import json
 import random
 import string
 
-import pythoncom
-import win32com.client as win32
-from bokeh.embed import components
+# import pythoncom
+# import win32com.client as win32
+# from bokeh.embed import components
 from flask import render_template, jsonify, Response
 from flask import request, make_response
 
@@ -24,28 +24,26 @@ import numpy as np
 
 import secrets
 
+
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))
 
 
-
-
-@main.route('stats')
-def general_stats():
-    items = [list(row2dict(result).values()) for result in db.session.query(Project).all()]
-    # print(request.method)
-    params = ['project_title', 'year_1', 'year_2', 'year_3', 'year_4', 'year_5', 'justification', 'comments']
-
-    fields = params[:]
-    fields.insert(0, 'id')
-    data = pd.DataFrame(items, columns=fields)
-    # print(data.head())
-    nans = np.round(data.isnull().sum() / data.shape[0], 2).to_frame()
-    nans.columns = ['Percent']
-    plot = vertical_bar_chart_from_data_frame2(nans, column='Percent', title='test')
-    script, div = components(plot)
-    feature_names = nans.index.values.tolist()
-    return render_template("main/basic_analysis.html", script=script, div=div, feature_names=feature_names)
+# @main.route('stats')
+# def general_stats():
+#     items = [list(row2dict(result).values()) for result in db.session.query(Project).all()]
+#     # print(request.method)
+#     params = ['project_title', 'year_1', 'year_2', 'year_3', 'year_4', 'year_5', 'justification', 'comments']
+#     fields = params[:]
+#     fields.insert(0, 'id')
+#     data = pd.DataFrame(items, columns=fields)
+#     # print(data.head())
+#     nans = np.round(data.isnull().sum() / data.shape[0], 2).to_frame()
+#     nans.columns = ['Percent']
+#     plot = vertical_bar_chart_from_data_frame2(nans, column='Percent', title='test')
+#     script, div = components(plot)
+#     feature_names = nans.index.values.tolist()
+#     return render_template("main/basic_analysis.html", script=script, div=div, feature_names=feature_names)
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -62,9 +60,9 @@ def home():
     # print(data.head())
     nans = np.round(data.isnull().sum() / data.shape[0], 2).to_frame()
     nans.columns = ['Percent']
-    plot = vertical_bar_chart_from_data_frame2(nans, column='Percent', title='test')
-    script, div = components(plot)
-
+    # plot = vertical_bar_chart_from_data_frame2(nans, column='Percent', title='test')
+    # script, div = components(plot)
+    script, div=None, None
     if request.method == 'POST':  # this block is only entered when the form is submitted
         project_id = request.args.get('project_id', None, int)
         project_create_update(params, project_id)
@@ -105,97 +103,43 @@ def project_create_update(params, project_id):
             db.session.add(project)
             db.session.commit()
 
-def model_crud(session, model, fields, params, item_id):
 
-    if item_id is not None:
-        email = model.query.get(item_id)
-    else:
-        email = model()
-    fieldss = []
-    for field in fields:
-        if (not field) | (field is None):
-            field = None
-        fieldss.append(field)
-    if all(f is None for f in fieldss):
-        pass
-    else:
-        for p, param in enumerate(params):
-            set_foo(email,param,fieldss[p])
-        
-        if item_id is not None:
-            session.commit()
-        else:
-            session.add(email)
-            session.commit()
+from flask_datatables import utils
 
-def set_foo(someobject, foostring, value):
-    return setattr(someobject,foostring, value)
-
-def get_foo(someobject, foostring):
-    return getattr(someobject,foostring)
-
-def row2dict(row):
-    """Given a row, it returns a dict."""
-    d = {}
-    for column in row.__table__.columns:
-        d[column.name] = getattr(row, column.name)
-    return d
 
 
 @main.route('/get_data/<string:table>')
 def get_data(table):
-    if table =="project":
+    if table == "project":
         model = Project
-    elif table =="email":
-        model=Email
-    items = [list(row2dict(result).values()) for result in db.session.query(model).all()]
+    elif table == "email":
+        model = Email
+
+    items = [list(utils.row2dict(result).values()) for result in db.session.query(model).all()]
     return jsonify(items=items)
 
 
-@main.route('/update_email_token',methods=['POST'])
+@main.route('/update_email_token', methods=['POST'])
 def update_email_tokens():
     for email in Email.query.all():
         # email = Email.query.get(row2dict(row)['id'])
-        email.token = secrets.token_hex(16)  
+        email.token = secrets.token_hex(16)
         db.session.commit()
     return jsonify(status='ok')
 
+
 @main.route('/email', methods=['GET', 'POST'])
 def email():
-
-    name = "Suez Budget Data Collection"
-    model = 'email'
-    print(name, model)
-    items = [list(row2dict(result).values()) for result in db.session.query(Email).all()]
-    print(items)
-    params = ['first_name', 'last_name','email','token']
-
-
-    if request.method == 'POST':  # this block is only entered when the form is submitted
-        print('post request')
-        fields = []
-        for param in params[:-1]:
-            field = request.form.get(param, None)
-            print(field)
-            fields.append(field)
-        email_id = request.args.get('project_id', None, int)
-        print('EMAILLLLLLLL IIIIDDDD: ', email_id)
-        model_crud(db.session,Email, fields,params[:-1], email_id)
-    fields = params[:]
-    fields.insert(0, 'id')
-    # fields.append('token')
-    print(params)
-    params_jso = json.dumps(params[:-1])
-    return render_template('main/email.html', headers=fields, name=name, model=model, params=params_jso)
+    return utils.render_table(session=db.session, model=Email)
 
 
 # @csrf.exempt
 @main.route('/delete_data/<string:table>/<int:param>', methods=['DELETE'])
-def delete_data(table,param):
-    if table =="project":
+def delete_data(table, param):
+    if table == "project":
         model = Project
-    elif table =="email":
-        model=Email
+    elif table == "email":
+        model = Email
     project = model.query.filter_by(id=param).first()
     db.session.delete(project)
     db.session.commit()
@@ -226,58 +170,60 @@ def download():
     return output
 
 
-@main.route('/send_emails', methods=['POST'])
-def send_emails():
-    pythoncom.CoInitialize()
-    outlook = win32.Dispatch('outlook.application')
-    items = [email for email in db.session.query(Email).all()]
-    domain ='127.0.0.1:5000'
-    for email in items:
-        mail = outlook.CreateItem(0)
-        mail.To = email.email
-        mail.Subject = 'Budget Login links Testing Web App'
-        mail.Body = 'Message body'
-        mail.HTMLBody = '<h2>{0}?token={1}</h2>'.format(domain,email.token) #this field is optional
+# @main.route('/send_emails', methods=['POST'])
+# def send_emails():
+#     pythoncom.CoInitialize()
+#     outlook = win32.Dispatch('outlook.application')
+#     items = [email for email in db.session.query(Email).all()]
+#     domain = '127.0.0.1:5000'
+#     for email in items:
+#         mail = outlook.CreateItem(0)
+#         mail.To = email.email
+#         mail.Subject = 'Budget Login links Testing Web App'
+#         mail.Body = 'Message body'
+#         mail.HTMLBody = '<h2>{0}?token={1}</h2>'.format(domain, email.token)  # this field is optional
 
-        mail.Send()
-    # def generate():
-    #     x = 0
-    #     for i in range(10):
-    #         print('SENDING')
-    #         print((i/100)*100)
-    #         email = items[i]
-    #         print(email.email)
-    #         x=x+100
-    #         # yield "data:" + str(x) + "\n\n"
-    #         # mail = outlook.CreateItem(0)
-    #         # mail.To = email.email
-    #         # mail.Subject = 'Budget Login links'
-    #         # mail.Body = 'Message body'
-    #         # mail.HTMLBody = '<h2>{0}</h2>'.format(email.token) #this field is optional
-    #         # # To attach a file to the email (optional):
-    #         # # attachment  = "Path to the attachment"
-    #         # # mail.Attachments.Add(attachment)
+#         mail.Send()
+#     # def generate():
+#     #     x = 0
+#     #     for i in range(10):
+#     #         print('SENDING')
+#     #         print((i/100)*100)
+#     #         email = items[i]
+#     #         print(email.email)
+#     #         x=x+100
+#     #         # yield "data:" + str(x) + "\n\n"
+#     #         # mail = outlook.CreateItem(0)
+#     #         # mail.To = email.email
+#     #         # mail.Subject = 'Budget Login links'
+#     #         # mail.Body = 'Message body'
+#     #         # mail.HTMLBody = '<h2>{0}</h2>'.format(email.token) #this field is optional
+#     #         # # To attach a file to the email (optional):
+#     #         # # attachment  = "Path to the attachment"
+#     #         # # mail.Attachments.Add(attachment)
 
-    #         # mail.Send()
-    #         time.sleep(0.5)
+#     #         # mail.Send()
+#     #         time.sleep(0.5)
 
-    #         return "data:" + str(x) + "\n\n"
+#     #         return "data:" + str(x) + "\n\n"
 
-    # return Response(generate(), mimetype= 'text/event-stream')
-    return jsonify(status='ok')
+#     # return Response(generate(), mimetype= 'text/event-stream')
+#     return jsonify(status='ok')
+
 
 import time
 
+
 @main.route('/progress')
 def progress():
-	def generate():
-		x = 0
-		while x <= 100:
-			yield "data:" + str(x) + "\n\n"
-			x = x + 10
-			time.sleep(0.5)
+    def generate():
+        x = 0
+        while x <= 100:
+            yield "data:" + str(x) + "\n\n"
+            x = x + 10
+            time.sleep(0.5)
 
-	return Response(generate(), mimetype= 'text/event-stream')
+    return Response(generate(), mimetype='text/event-stream')
 
 # # @main.route('/send_emails', methods = ['GET','POST'])
 # @main.route('/progress', methods = ['GET','POST'])
